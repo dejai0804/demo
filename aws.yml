@@ -1,4 +1,4 @@
-
+---
 - name: Download AWS Inspector agent installer.
   get_url:
     url: "https://inspector-agent.amazonaws.com/linux/latest/install"
