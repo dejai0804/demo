@@ -1,0 +1,11 @@
+Variables for ec2 creation
+aws_access_key: XXXXXXXXXXXXXXXXXXXXXX
+aws_secret_key: XXXXXXXXXXXXXXXXXXXXXX
+InstanceType: t2.micro
+KeyPair: XXXXXXXXXX
+image: XXXXXXXX
+region: us-east-2
+group: default
+SubId: XXXXXXXXXXXXXX
+DeviceName: /dev/xvdb
+DeviceType: gp2
