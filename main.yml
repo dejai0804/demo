@@ -4,12 +4,25 @@
 - include: aws.yml
 - include: epel.yml
 
-- name: Mount up additional volume
+- name: format the filesystem     
+  filesystem:
+      fstype: ext4
+      dev: /dev/xvdb
+
+- name: Capture the UUID of a /dev/xvdb volume
+  shell: blkid /dev/xvdb > file.txt &&  sed 's/...........//;s/.............$//' file.txt > result.txt && cat result.txt
+  register: voluuid
+
+ 
+
+- name: mount the filesytem
   mount:
     path: /mnt/deployment
-    src: LABEL="/dev/xvdf" 
+    src: "{{ voluuid.stdout }}" 
     fstype: ext4
-    state: present
+    opts: defaults,nofail
+    state: mounted
+
   
 
 - name: Copy /etc/hosts file 
